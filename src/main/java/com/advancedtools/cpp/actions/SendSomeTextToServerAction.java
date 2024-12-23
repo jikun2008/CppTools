@@ -2,10 +2,7 @@
 package com.advancedtools.cpp.actions;
 
 import com.advancedtools.cpp.commands.StringCommand;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DataConstants;
-import com.intellij.openapi.actionSystem.DataContext;
-import com.intellij.openapi.actionSystem.Presentation;
+import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
@@ -29,7 +26,7 @@ public class SendSomeTextToServerAction extends BaseEditorAction {
 
   public void actionPerformed(AnActionEvent anActionEvent) {
     final DataContext dataContext = anActionEvent.getDataContext();
-    final Project project = (Project) dataContext.getData(DataConstants.PROJECT);
+    final Project project = (Project) dataContext.getData(CommonDataKeys.PROJECT.getName());
 
     new SendDialog(project).show();
   }

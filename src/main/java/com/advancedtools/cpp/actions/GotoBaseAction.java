@@ -6,12 +6,12 @@ import com.intellij.ide.actions.GotoActionBase;
 import com.intellij.ide.util.gotoByName.ChooseByNamePopup;
 import com.intellij.ide.util.gotoByName.ChooseByNamePopupComponent;
 import com.intellij.ide.util.gotoByName.ContributorsBasedGotoByModel;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DataConstants;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.application.ModalityState;
-import com.intellij.navigation.NavigationItem;
 import com.intellij.navigation.ChooseByNameContributor;
+import com.intellij.navigation.NavigationItem;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.application.ModalityState;
+import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import org.jetbrains.annotations.Nullable;
 
@@ -22,7 +22,7 @@ public abstract class GotoBaseAction extends GotoActionBase {
   public abstract CppSymbolContributor getNameContributor();
 
   protected void gotoActionPerformed(AnActionEvent anActionEvent) {
-    final Project project = (Project) anActionEvent.getDataContext().getData(DataConstants.PROJECT);
+    final Project project = (Project) anActionEvent.getDataContext().getData(CommonDataKeys.PROJECT.getName());
 
     final ChooseByNamePopup byNamePopup = ChooseByNamePopup.createPopup(
       project,

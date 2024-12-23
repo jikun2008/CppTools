@@ -1,12 +1,12 @@
 // Copyright 2006-2012 AdvancedTools. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 package com.advancedtools.cpp.settings;
 
-import com.intellij.openapi.actionSystem.DataConstants;
+import com.advancedtools.cpp.CppSupportSettings;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.wm.ex.WindowManagerEx;
-import com.advancedtools.cpp.CppSupportSettings;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -133,7 +133,7 @@ public abstract class StringListEditor extends DialogWrapper {
     Project project = null;
     while (mostRecentFocusedWindow != null) {
       if (mostRecentFocusedWindow instanceof DataProvider) {
-        project = (Project) ((DataProvider) mostRecentFocusedWindow).getData(DataConstants.PROJECT);
+        project = (Project) ((DataProvider) mostRecentFocusedWindow).getData(CommonDataKeys.PROJECT.getName());
         if (project != null) break;
       }
       mostRecentFocusedWindow = (Window) mostRecentFocusedWindow.getParent();

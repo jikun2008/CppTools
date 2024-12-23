@@ -4,7 +4,7 @@
   <version>0.8 build 8</version>
   <idea-version since-build="139.1" until-build="142.0"/>
   <depends>com.intellij.modules.lang</depends>
-  <depends optional="true" config-file="exended_platform.xml">com.intellij.modules.java</depends>
+<!--  <depends optional="true" config-file="exended_platform.xml">com.intellij.modules.java</depends>-->
   <vendor url="http://bugs.cpptools.com" email="support@adv-tools.com">AdvancedTools</vendor>
   <description>
     Provides advanced C / C++ / Makefile editing and compiling / debugging capabilities. Editing capabilities consist of

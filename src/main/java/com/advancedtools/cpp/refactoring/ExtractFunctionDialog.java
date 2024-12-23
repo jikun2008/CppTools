@@ -3,6 +3,7 @@ package com.advancedtools.cpp.refactoring;
 
 import com.advancedtools.cpp.CppSupportLoader;
 import com.intellij.ide.DataManager;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataConstants;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogWrapper;
@@ -45,7 +46,7 @@ class ExtractFunctionDialog extends DialogWrapper {
   private void createUIComponents() {
     functionMethodNameTextField = new NameSuggestionsField(
       new String[] {"fun"},
-      (Project) DataManager.getInstance().getDataContext().getData(DataConstants.PROJECT),
+      (Project) DataManager.getInstance().getDataContext().getData(CommonDataKeys.PROJECT),
       CppSupportLoader.CPP_FILETYPE
     );
   }

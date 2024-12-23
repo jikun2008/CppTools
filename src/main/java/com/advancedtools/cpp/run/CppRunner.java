@@ -23,12 +23,17 @@ import org.jetbrains.annotations.Nullable;
 public class CppRunner extends GenericProgramRunner {
   @Nullable
   @Override
-  protected RunContentDescriptor doExecute(Project project, RunProfileState runProfileState, RunContentDescriptor runContentDescriptor, ExecutionEnvironment executionEnvironment) throws ExecutionException {
+  protected RunContentDescriptor doExecute(Project project, RunProfileState runProfileState, RunContentDescriptor runContentDescriptor, ExecutionEnvironment executionEnvironment) {
     FileDocumentManager.getInstance().saveAllDocuments();
     Executor executor = executionEnvironment.getExecutor();
 
-    ExecutionResult executionResult = runProfileState.execute(executor, this);
-    if (executionResult == null) return null;
+      ExecutionResult executionResult = null;
+      try {
+          executionResult = runProfileState.execute(executor, this);
+      } catch (ExecutionException e) {
+          throw new RuntimeException(e);
+      }
+      if (executionResult == null) return null;
     final RunContentBuilder contentBuilder = new RunContentBuilder(executionResult, executionEnvironment);
     onProcessStarted(executionEnvironment.getRunnerSettings(), executionResult);
 

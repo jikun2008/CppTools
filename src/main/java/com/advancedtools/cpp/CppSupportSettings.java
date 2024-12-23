@@ -4,6 +4,7 @@ package com.advancedtools.cpp;
 import com.advancedtools.cpp.communicator.BuildingCommandHelper;
 import com.advancedtools.cpp.communicator.Communicator;
 import com.advancedtools.cpp.facade.EnvironmentFacade;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataConstants;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DataProvider;
@@ -73,7 +74,7 @@ public class CppSupportSettings implements ApplicationComponent, JDOMExternaliza
           Project project = null;
           while (mostRecentFocusedWindow != null) {
             if (mostRecentFocusedWindow instanceof DataProvider) {
-              project = (Project) ((DataProvider)mostRecentFocusedWindow).getData(DataConstants.PROJECT);
+              project = (Project) ((DataProvider)mostRecentFocusedWindow).getData( CommonDataKeys.PROJECT.getName());
               if (project != null) break;
             }
             mostRecentFocusedWindow = (Window) mostRecentFocusedWindow.getParent();

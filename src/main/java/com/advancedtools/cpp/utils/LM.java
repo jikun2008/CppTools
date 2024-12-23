@@ -3,7 +3,7 @@ package com.advancedtools.cpp.utils;
 
 import com.advancedtools.cpp.CppSupportSettings;
 import com.intellij.ide.BrowserUtil;
-import com.intellij.openapi.actionSystem.DataConstants;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogWrapper;
@@ -29,7 +29,7 @@ public class LM {
   private static boolean registered;
 
   public static void showAboutDialog(DataContext dataContext) {
-    new LMDialog((Project) dataContext.getData(DataConstants.PROJECT)).show();
+    new LMDialog((Project) dataContext.getData(CommonDataKeys.PROJECT.getName())).show();
   }
 
   private static class Data {
@@ -113,7 +113,7 @@ public class LM {
       myLinkText.addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
-          BrowserUtil.launchBrowser("http://www.adv-tools.com/buy");
+          BrowserUtil.browse("http://www.adv-tools.com/buy");
         }
       });
       init();

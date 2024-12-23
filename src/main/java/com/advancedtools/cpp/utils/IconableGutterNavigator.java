@@ -1,16 +1,15 @@
 // Copyright 2006-2012 AdvancedTools. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 package com.advancedtools.cpp.utils;
 
-import com.intellij.openapi.editor.markup.GutterIconRenderer;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DataConstants;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.editor.markup.GutterIconRenderer;
 import com.intellij.openapi.project.Project;
-
-import javax.swing.*;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import javax.swing.*;
 
 /**
  * @author maxim
@@ -55,7 +54,7 @@ abstract public class IconableGutterNavigator extends GutterIconRenderer {
     if (myAction == null) {
       myAction = new AnAction() {
         public void actionPerformed(AnActionEvent anActionEvent) {
-          final Project project = (Project) anActionEvent.getDataContext().getData(DataConstants.PROJECT);
+          final Project project = (Project) anActionEvent.getDataContext().getData(CommonDataKeys.PROJECT.getName());
           doNavigate(project);
         }
       };

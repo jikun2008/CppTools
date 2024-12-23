@@ -45,7 +45,7 @@ public class ShowAllProblemsInProjectAction extends AnAction {
   public void update(AnActionEvent anActionEvent) {
     super.update(anActionEvent);
     final DataContext dataContext = anActionEvent.getDataContext();
-    final Project project = (Project) dataContext.getData(DataConstants.PROJECT);
+    final Project project = (Project) dataContext.getData( CommonDataKeys.PROJECT.getName());
     final Presentation presentation = anActionEvent.getPresentation();
 
     presentation.setEnabled(
@@ -57,7 +57,7 @@ public class ShowAllProblemsInProjectAction extends AnAction {
 
   public void actionPerformed(AnActionEvent anActionEvent) {
     final DataContext dataContext = anActionEvent.getDataContext();
-    final Project project = (Project) dataContext.getData(DataConstants.PROJECT);
+    final Project project = (Project) dataContext.getData(CommonDataKeys.PROJECT.getName());
 
     final CppSupportLoader loader = CppSupportLoader.getInstance(project);
     final ErrorTreeView treeView = loader.getErrorTreeView();

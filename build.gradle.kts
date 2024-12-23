@@ -15,6 +15,8 @@ repositories {
     maven { setUrl("https://maven.aliyun.com/repository/gradle-plugin") }
     maven { setUrl("https://maven.aliyun.com/repository/public") }
     maven { setUrl("https://jitpack.io") }
+    maven { setUrl("https://maven.aliyun.com/nexus/content/groups/public/") }
+    maven { setUrl("https://maven.aliyun.com/nexus/content/repositories/jcenter") }
     gradlePluginPortal()
     google()
     mavenCentral()
