@@ -1,6 +1,7 @@
 classes/
 target/
 CppTools.zip
+build/
 .gradle/
 .idea/
 *.iws
